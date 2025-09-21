@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .sidebar {
+            transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg">
+        <i data-feather="menu"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed h-full w-64 bg-blue-800 text-white p-4 shadow-lg">
+        <div class="flex items-center mb-8">
+            <i data-feather="home" class="mr-2"></i>
+            <h1 class="text-xl font-bold">College Dashboard</h1>
+        </div>
+        
+        <nav>
+            <ul class="space-y-2">
+                <li>
+                    <a href="index.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="grid" class="mr-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="lost-found.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="search" class="mr-2"></i>
+                        Lost & Found
+                    </a>
+                </li>
+                <li>
+                    <a href="sports.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="award" class="mr-2"></i>
+                        Sports Records
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-login.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="lock" class="mr-2"></i>
+                        Admin Login
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="absolute bottom-4 left-4 right-4">
+            <div class="text-sm opacity-75">College Dashboard v4.0</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-0 md:ml-64 p-4 md:p-8">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800">Welcome to College Dashboard</h1>
+                <p class="text-gray-600">Your central hub for college services and information</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dashboard Cards -->
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-100 rounded-full text-blue-600">
+                            <i data-feather="search"></i>
+                        </div>
+                        <h2 class="ml-3 text-lg font-semibold">Lost & Found</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Report or find lost items on campus</p>
+                    <a href="lost-found.html" class="text-blue-600 hover:underline flex items-center">
+                        Go to Lost & Found <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-green-100 rounded-full text-green-600">
+                            <i data-feather="award"></i>
+                        </div>
+                        <h2 class="ml-3 text-lg font-semibold">Sports Records</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">View latest sports results and rankings</p>
+                    <a href="sports.html" class="text-blue-600 hover:underline flex items-center">
+                        View Sports <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-purple-100 rounded-full text-purple-600">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        <h2 class="ml-3 text-lg font-semibold">College Events</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Upcoming events and important dates</p>
+                    <a href="#" class="text-blue-600 hover:underline flex items-center">
+                        View Calendar <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Updates Section -->
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">Recent Updates</h2>
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-4 border-b">
+                        <h3 class="font-semibold">Latest Notifications</h3>
+                    </div>
+                    <div class="divide-y">
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start">
+                                <div class="p-2 bg-blue-100 rounded-full text-blue-600 mr-3">
+                                    <i data-feather="bell" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New lost item reported</p>
+                                    <p class="text-sm text-gray-500">Water bottle found in Library</p>
+                                    <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start">
+                                <div class="p-2 bg-green-100 rounded-full text-green-600 mr-3">
+                                    <i data-feather="award" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Basketball tournament results</p>
+                                    <p class="text-sm text-gray-500">Team A wins against Team B</p>
+                                    <p class="text-xs text-gray-400 mt-1">Yesterday</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init();
+        
+        // Initialize feather icons
+        feather.replace();
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+        
+        // Check if browser supports notifications
+        if ('Notification' in window) {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    console.log('Notification permission granted');
+                }
+            });
+        }
+        
+        // Service worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

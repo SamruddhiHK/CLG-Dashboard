@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Records | College Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .sidebar {
+            transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg">
+        <i data-feather="menu"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed h-full w-64 bg-blue-800 text-white p-4 shadow-lg">
+        <div class="flex items-center mb-8">
+            <i data-feather="home" class="mr-2"></i>
+            <h1 class="text-xl font-bold">College Dashboard</h1>
+        </div>
+        
+        <nav>
+            <ul class="space-y-2">
+                <li>
+                    <a href="index.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="grid" class="mr-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="lost-found.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="search" class="mr-2"></i>
+                        Lost & Found
+                    </a>
+                </li>
+                <li>
+                    <a href="sports.html" class="flex items-center p-2 rounded bg-blue-700">
+                        <i data-feather="award" class="mr-2"></i>
+                        Sports Records
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-login.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="lock" class="mr-2"></i>
+                        Admin Login
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-0 md:ml-64 p-4 md:p-8">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-800">Sports Records</h1>
+                <p class="text-gray-600">View latest sports results, rankings and upcoming events</p>
+            </header>
+
+            <!-- Sports Tabs -->
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="-mb-px flex space-x-8 overflow-x-auto">
+                    <a href="#" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Basketball</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Football</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Volleyball</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Athletics</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Badminton</a>
+                </nav>
+            </div>
+
+            <!-- Current Standings -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Basketball - Current Standings</h2>
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Position</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Played</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Won</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lost</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                                <span class="text-yellow-800 font-bold">1</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/1" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Team Titans</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">8</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">7</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">1</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">21</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-full flex items-center justify-center">
+                                                <span class="text-gray-800 font-bold">2</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/2" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Team Spartans</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">8</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">6</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">2</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">18</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-amber-100 rounded-full flex items-center justify-center">
+                                                <span class="text-amber-800 font-bold">3</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/3" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Team Warriors</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">8</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">5</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">3</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">15</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Matches -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Recent Matches</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="text-sm font-medium text-gray-500">May 15, 2023</div>
+                            <div class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Completed</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/1" class="w-10 h-10 rounded-full mr-2" alt="Team Titans">
+                                <span class="font-medium">Titans</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">82</div>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/2" class="w-10 h-10 rounded-full mr-2" alt="Team Spartans">
+                                <span class="font-medium">Spartans</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">76</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="text-sm font-medium text-gray-500">May 12, 2023</div>
+                            <div class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Completed</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/3" class="w-10 h-10 rounded-full mr-2" alt="Team Warriors">
+                                <span class="font-medium">Warriors</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">68</div>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/1" class="w-10 h-10 rounded-full mr-2" alt="Team Titans">
+                                <span class="font-medium">Titans</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">72</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="text-sm font-medium text-gray-500">May 10, 2023</div>
+                            <div class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Upcoming</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/2" class="w-10 h-10 rounded-full mr-2" alt="Team Spartans">
+                                <span class="font-medium">Spartans</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">-</div>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center">
+                                <img src="http://static.photos/sport/200x200/4" class="w-10 h-10 rounded-full mr-2" alt="Team Legends">
+                                <span class="font-medium">Legends</span>
+                            </div>
+                            <div class="text-xl font-bold mx-4">-</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Chart -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Team Performance</h2>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <canvas id="performanceChart" height="300"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+        
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+        
+        // Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [
+                    {
+                        label: 'Team Titans',
+                        data: [65, 59, 80, 81, 82],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        fill: false
+                    },
+                    {
+                        label: 'Team Spartans',
+                        data: [58, 48, 70, 72, 76],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        fill: false
+                    },
+                    {
+                        label: 'Team Warriors',
+                        data: [60, 55, 65, 63, 68],
+                        borderColor: 'rgb(255, 159, 64)',
+                        tension: 0.1,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Points Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

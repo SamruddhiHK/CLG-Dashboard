@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Records Admin | College Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .sidebar {
+            transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg">
+        <i data-feather="menu"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed h-full w-64 bg-blue-800 text-white p-4 shadow-lg">
+        <div class="flex items-center mb-8">
+            <i data-feather="home" class="mr-2"></i>
+            <h1 class="text-xl font-bold">College Dashboard</h1>
+        </div>
+        
+        <nav>
+            <ul class="space-y-2">
+                <li>
+                    <a href="index.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="grid" class="mr-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="lost-found-admin.html" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="search" class="mr-2"></i>
+                        Lost & Found (Admin)
+                    </a>
+                </li>
+                <li>
+                    <a href="sports-admin.html" class="flex items-center p-2 rounded bg-blue-700">
+                        <i data-feather="award" class="mr-2"></i>
+                        Sports Records (Admin)
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-2 rounded hover:bg-blue-700">
+                        <i data-feather="log-out" class="mr-2"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-0 md:ml-64 p-4 md:p-8">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800">Sports Records Admin</h1>
+                        <p class="text-gray-600">Manage sports results, rankings and events</p>
+                    </div>
+                    <button id="addMatchBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center">
+                        <i data-feather="plus" class="mr-2 w-4 h-4"></i> Add Match
+                    </button>
+                </div>
+            </header>
+
+            <!-- Sports Tabs -->
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="-mb-px flex space-x-8 overflow-x-auto">
+                    <a href="#" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Basketball</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Football</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Volleyball</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Athletics</a>
+                </nav>
+            </div>
+
+            <!-- Current Matches -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Upcoming Matches</h2>
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date & Time</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teams</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Venue</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">May 18, 2023</div>
+                                        <div class="text-sm text-gray-500">3:00 PM</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/2" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Spartans</div>
+                                                <div class="text-sm text-gray-500">vs</div>
+                                                <div class="text-sm font-medium text-gray-900">Legends</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Main Gym</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Upcoming</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-red-600 hover:text-red-900">Cancel</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">May 20, 2023</div>
+                                        <div class="text-sm text-gray-500">4:30 PM</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/1" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Titans</div>
+                                                <div class="text-sm text-gray-500">vs</div>
+                                                <div class="text-sm font-medium text-gray-900">Warriors</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Main Gym</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Upcoming</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-red-600 hover:text-red-900">Cancel</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Completed Matches -->
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Completed Matches</h2>
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teams</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">May 15, 2023</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/1" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Titans</div>
+                                                <div class="text-sm text-gray-500">vs</div>
+                                                <div class="text-sm font-medium text-gray-900">Spartans</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 font-bold">82 - 76</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Export</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">May 12, 2023</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="http://static.photos/sport/200x200/3" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Warriors</div>
+                                                <div class="text-sm text-gray-500">vs</div>
+                                                <div class="text-sm font-medium text-gray-900">Titans</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 font-bold">68 -
+</body>
+</html>
